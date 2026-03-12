@@ -44,7 +44,7 @@ def send_whatsapp(message: str) -> None:
 
 
 @app.function_name(name="WeatherWhatsApp")
-@app.route(route="weather-whatsapp", methods=["GET", "POST"])
+@app.route(route="weather-whatsapp", methods=["GET", "POST"], auth_level=func.AuthLevel.ANONYMOUS)
 def weather_whatsapp(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("WeatherWhatsApp function triggered.")
 
