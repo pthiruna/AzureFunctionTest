@@ -1,0 +1,16 @@
+# Azure Functions
+local.settings.json
+.python_packages/
+__pycache__/
+*.pyc
+.env
+
+# Virtual environment
+.venv/
+venv/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
