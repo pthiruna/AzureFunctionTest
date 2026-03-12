@@ -1,5 +1,6 @@
 import logging
 import os
+from datetime import datetime
 from urllib.parse import quote
 
 import requests
@@ -54,7 +55,8 @@ def weather_whatsapp(req: func.HttpRequest) -> func.HttpResponse:
         logging.error(f"Failed to fetch weather: {e}")
         return func.HttpResponse(f"Error fetching weather data: {e}", status_code=500)
 
-    message = f"Cary, NC (27519): {temp_f}\u00b0F"
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    message = f"Cary, NC (27519): {temp_f}\u00b0F\n{now}"
     logging.info(f"Weather fetched: {message}")
 
     try:
