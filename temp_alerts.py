@@ -2,6 +2,7 @@ import logging
 import os
 from datetime import datetime
 from urllib.parse import quote
+from zoneinfo import ZoneInfo
 
 import requests
 import azure.functions as func
@@ -55,7 +56,7 @@ def weather_whatsapp(req: func.HttpRequest) -> func.HttpResponse:
         logging.error(f"Failed to fetch weather: {e}")
         return func.HttpResponse(f"Error fetching weather data: {e}", status_code=500)
 
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %I:%M:%S %p %Z")
     message = f"Cary, NC (27519): {temp_f}\u00b0F\n{now}"
     logging.info(f"Weather fetched: {message}")
 
